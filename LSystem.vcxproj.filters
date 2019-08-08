@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{557014db-ed91-40ec-9339-c807ac56401f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LSystem.cpp">
@@ -20,6 +23,9 @@
     </ClCompile>
     <ClCompile Include="vec.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LSystem_wrap.cxx">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,5 +38,8 @@
     <ClInclude Include="vec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LSystem.i" />
   </ItemGroup>
 </Project>
