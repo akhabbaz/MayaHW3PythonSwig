@@ -85,7 +85,7 @@ void LSystem::loadProgramFromString(const std::string& program)
     while (index < program.size())
     {
         size_t nextIndex = program.find("\n", index);
-        std::string line = program.substr(index, nextIndex);
+        std::string line = program.substr(index, nextIndex - index);
         addProduction(line);
         if (nextIndex == std::string::npos) break;
         index = nextIndex+1;
