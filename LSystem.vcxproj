@@ -65,6 +65,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
     <TargetName>_$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -73,6 +74,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
     <TargetName>_$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -147,10 +149,10 @@
   <ItemGroup>
     <CustomBuild Include="LSystem.i">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Solutiondir)swigwin-3.0.12\swig.exe -c++ -python -outdir $(outdir) %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Solutiondir)swigwin-3.0.12\swig.exe -c++ -python -outdir $(outdir) %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename)_wrap.cpp;$(Outdir)%(Filename).py;%(Outputs)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)_wrap.cpp;$(Outdir)%(Filename).py;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename)_wrap.cpp;$(Outdir)%(Filename).py</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)_wrap.cpp;$(Outdir)%(Filename).py</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swigwin-3.0.12\swig.exe -c++ -python –outdir $(Outdir) %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swigwin-3.0.12\swig.exe -c++ -python –outdir $(Outdir) %(Identity)</Command>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

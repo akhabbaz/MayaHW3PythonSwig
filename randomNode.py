@@ -33,6 +33,9 @@ class randomNode(OpenMayaMPx.MPxNode):
     # Declare class variables:
     # TODO:: declare the input and output class variables
     #         i.e. inNumPoints = OpenMaya.MObject()
+    inNumPoints = OpenMaya.MObject();
+    minVal      = OpenMaya.MObject();
+    maxVal      = openMaya.MObject();
     
     # constructor
     def __init__(self):

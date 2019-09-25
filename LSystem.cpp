@@ -197,7 +197,23 @@ void LSystem::process(unsigned int n,
     std::vector<Geometry> models;
     process(n,branches,models);
 }
-
+// addToStdVector will take a vec3 and append its three arguments to the end the
+// vector of floats 'prior
+void addToStdVector(const vec3& in, std::vector<float>& prior)
+{
+	for (int i = 0; i < 3; ++i)
+	{
+		prior.push_back(in[i]);
+	}
+}
+// converts a branch to a vector in the format desired
+std::vector<float>  BranchToVector(const LSystem::Branch& br)
+{
+	std::vector<float> components;
+	addToStdVector(br.first, components);
+	addToStdVector(br.second, components);
+	return components;
+}
 // TODO:: Finish this function.
 //        This is the function that will be called from Python to generate the branches and flowers.
 //        Notice the argument types. Since we are interfacing with Python, we must simplify the data
@@ -210,13 +226,24 @@ void LSystem::process(unsigned int n,
 //           in the format described above. Notice that in the LSystem.i file, we have defined
 //           a std::vector<float> as a VecFloat in Python and a std::vector<std::vector<float> > as
 //           a VectorPyBranch in Python.
+//
 void LSystem::processPy(unsigned int n,
 		std::vector<std::vector<float> >& branches, std::vector<std::vector<float> >& flowers) {
 		
 	std::vector<Branch> preBranches;
-    std::vector<Geometry> preFlowers;
-
+    	std::vector<Geometry> preFlowers;
 	process(n, preBranches, preFlowers);
+	for (std::vector<int>::size_type i = 0; i< preBranches.size(); ++i)
+	{
+		branches.push_back(BranchToVector(preBranches[i]));
+	}
+	for (std::vector<int>::size_type i = 0; i< preFlowers.size(); ++i)
+	{
+		
+		std::vector<float> oneFlower;
+		addToStdVector(preFlowers[i].first, oneFlower);
+		flowers.push_back(oneFlower);
+	}
 }
 
 // LOOK: This is where the L-System creates the branches and the flowers.

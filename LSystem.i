@@ -6,9 +6,10 @@
 %include "carrays.i"
 %include "std_vector.i"
 %include "std_string.i"
-%include <typemaps.i>
+%include "typemaps.i"
 
 %apply const std::string& {std::string* foo};
+//%apply
 
 // Tell SWIG that this value should be passed by reference.
 %apply std::vector<std::vector<float> >& INOUT { std::vector<std::vector<float> >& branches };
